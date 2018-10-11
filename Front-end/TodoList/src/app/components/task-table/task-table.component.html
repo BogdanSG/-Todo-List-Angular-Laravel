@@ -1,6 +1,6 @@
-<button mat-raised-button (click)="sidenavOpen()"> Open </button>
+<button  mat-raised-button (click)="sidenavOpen()"> Create New Task </button>
 
-<table mat-table [dataSource]="TaskList" class="mat-elevation-z19" style="width: 100%; height: 100%;">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z19" style="width: 100%; height: 100%;">
 
   <ng-container [matColumnDef]="column" *ngFor="let column of columnsToDisplay">
     <th mat-header-cell *matHeaderCellDef> {{column}} </th>

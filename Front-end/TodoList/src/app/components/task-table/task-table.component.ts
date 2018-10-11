@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
-import {MatSidenav} from '@angular/material';
+import {MatSidenav, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-task-table',
@@ -11,6 +11,7 @@ import {MatSidenav} from '@angular/material';
 export class TaskTableComponent implements OnInit {
 
   TaskList : Task[];
+  dataSource;
 
   @Input()
   sidenav: MatSidenav;
@@ -20,6 +21,7 @@ export class TaskTableComponent implements OnInit {
   constructor(private TaskService : TaskService) {
 
     this.TaskList = this.TaskService.getTaskList();
+    this.refreshTable();
 
   }//constructor
 
@@ -36,5 +38,11 @@ export class TaskTableComponent implements OnInit {
     }//if
 
   }//sidenavOpen
+
+  refreshTable(){
+
+    this.dataSource = new MatTableDataSource(this.TaskList);
+
+  }//refreshTable
 
 }//TaskTableComponent

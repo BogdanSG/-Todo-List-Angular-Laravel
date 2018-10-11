@@ -27,4 +27,10 @@ export class TaskService {
 
   }//getTaskList
 
+  addTask(task : Task){
+
+    this.TaskList.push(task);
+
+  }//addTask
+
 }//TaskService

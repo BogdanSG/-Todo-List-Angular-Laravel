@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material';
 import {TaskListEmptyDialogComponent} from '../../task-list-empty-dialog/task-list-empty-dialog.component';
 import {MatSidenav} from '@angular/material/sidenav';
 import {TaskService} from '../../../services/task.service';
+import {TaskTableComponent} from '../../task-table/task-table.component';
 
 @Component({
   selector: 'app-main-page',
@@ -14,6 +15,9 @@ export class MainPageComponent implements OnInit {
 
   @ViewChild('sidenav')
   sidenav: MatSidenav;
+
+  @ViewChild('taskTable')
+  taskTable: TaskTableComponent;
 
   TaskList : Task[];
 
@@ -62,5 +66,15 @@ export class MainPageComponent implements OnInit {
     this.sidenav.open();
 
   }//sidenavСlose
+
+  onAddTask(){
+
+    if(this.taskTable){
+
+      this.taskTable.refreshTable();
+
+    }//if
+
+  }//onAddTask
 
 }//MainPageComponent

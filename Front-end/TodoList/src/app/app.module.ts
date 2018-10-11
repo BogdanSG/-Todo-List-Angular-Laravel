@@ -17,7 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule, MatTableModule} from '@angular/material';
+import { MatListModule, MatSnackBarModule, MatTableModule } from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatToolbarModule } from '@angular/material';
 
@@ -55,7 +55,8 @@ import { TaskService } from './services/task.service';
     MatListModule,
     MatBadgeModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     TaskListEmptyDialogComponent
