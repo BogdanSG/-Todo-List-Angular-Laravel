@@ -21,13 +21,15 @@ export class MainPageComponent implements OnInit {
 
   TaskList : Task[];
 
+  Loading: boolean = true;
+
   constructor(private TaskListEmptyDialog : MatDialog, private TaskService : TaskService) {
 
     this.TaskList = this.TaskService.getTaskList();
 
   }//constructor
 
-  ngOnInit() {
+  showTaskListEmptyDialog(){
 
     //Angular ExpressionChangedAfterItHasBeenCheckedError Bug
     setTimeout(() => {
@@ -53,19 +55,18 @@ export class MainPageComponent implements OnInit {
 
     });
 
+  }//showTaskListEmptyDialog
+
+  ngOnInit() {
+
+    setTimeout(function () {
+
+      this.Loading = false;
+      this.showTaskListEmptyDialog();
+
+    }.bind(this), 1200);
+
   }//ngOnInit
-
-  sidenavClose(){
-
-    this.sidenav.close();
-
-  }//sidenavСlose
-
-  sidenavOpen(){
-
-    this.sidenav.open();
-
-  }//sidenavСlose
 
   onAddTask(){
 
@@ -76,5 +77,11 @@ export class MainPageComponent implements OnInit {
     }//if
 
   }//onAddTask
+
+  onRemoveTask(){
+
+    this.showTaskListEmptyDialog();
+
+  }//onRemoveTask
 
 }//MainPageComponent

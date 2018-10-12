@@ -17,7 +17,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule, MatSnackBarModule, MatTableModule } from '@angular/material';
+import {
+  MatListModule,
+  MatPaginatorModule, MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatTableModule,
+  MatTooltipModule
+} from '@angular/material';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatToolbarModule } from '@angular/material';
 
@@ -26,6 +34,8 @@ import { MainPageComponent } from './components/pages/main-page/main-page.compon
 import { TaskListEmptyDialogComponent } from './components/task-list-empty-dialog/task-list-empty-dialog.component';
 import { CreateTaskDrawerComponent } from './components/create-task-drawer/create-task-drawer.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
+import { TaskEditDialogComponent } from './components/task-edit-dialog/task-edit-dialog.component';
+import { TaskRemoveDialogComponent } from './components/task-remove-dialog/task-remove-dialog.component';
 
 import { TaskService } from './services/task.service';
 
@@ -35,7 +45,9 @@ import { TaskService } from './services/task.service';
     MainPageComponent,
     TaskListEmptyDialogComponent,
     CreateTaskDrawerComponent,
-    TaskTableComponent
+    TaskTableComponent,
+    TaskEditDialogComponent,
+    TaskRemoveDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,10 +68,17 @@ import { TaskService } from './services/task.service';
     MatBadgeModule,
     MatToolbarModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   entryComponents: [
-    TaskListEmptyDialogComponent
+    TaskListEmptyDialogComponent,
+    TaskEditDialogComponent,
+    TaskRemoveDialogComponent
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]

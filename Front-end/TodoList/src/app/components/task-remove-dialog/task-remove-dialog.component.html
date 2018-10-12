@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Remove</h1>
+<div mat-dialog-content>
+  <mat-toolbar *ngIf="!Loading">
+    <div>Do you really want to remove the task?</div>
+  </mat-toolbar>
+  <mat-progress-bar *ngIf="Loading" mode="indeterminate" color="warn" style="min-width: 300px"></mat-progress-bar>
+</div>
+<div mat-dialog-actions *ngIf="!Loading">
+  <button mat-raised-button color="primary" [mat-dialog-close]="false">No</button>
+  <button mat-raised-button color="warn" (click)="RemoveClick()" cdkFocusInitial>Yes</button>
+</div>

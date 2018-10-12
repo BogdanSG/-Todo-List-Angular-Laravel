@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Edit</h1>
+<div mat-dialog-content>
+  <mat-form-field *ngIf="!Loading">
+    <textarea matInput [(ngModel)]="data"></textarea>
+  </mat-form-field>
+  <mat-progress-bar *ngIf="Loading" mode="indeterminate" style="min-width: 300px"></mat-progress-bar>
+</div>
+<div mat-dialog-actions *ngIf="!Loading">
+  <button mat-raised-button color="warn" [mat-dialog-close]="false">Cansle</button>
+  <button mat-raised-button color="primary" (click)="EditClick()" cdkFocusInitial>OK</button>
+</div>

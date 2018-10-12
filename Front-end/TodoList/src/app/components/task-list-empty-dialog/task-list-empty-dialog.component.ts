@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListEmptyDialogComponent implements OnInit {
 
-  constructor() { }
+  data: any;
+
+  constructor() {
+
+  }//constructor
 
   ngOnInit() {
-  }
 
-}
+  }//ngOnInit
+
+}//TaskListEmptyDialogComponent

@@ -6,13 +6,13 @@ export class Task {
     this.text = this.text ? this.text : '';
     this.created = this.created ? this.created : new Date('1970-01-01');
 
-    this.created.toString = this.DateToString;
+    this.created.toString = this.DateToString.bind(this);
 
   }//constructor
 
   DateToString(){
 
-    return 'adsads';
+    return this.created.toLocaleDateString('ru-RU') + ' ' + this.created.toLocaleTimeString('ru-RU');
 
   }//DateToString
 

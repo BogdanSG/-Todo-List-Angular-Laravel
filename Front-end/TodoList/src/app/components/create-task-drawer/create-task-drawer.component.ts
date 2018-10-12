@@ -16,8 +16,10 @@ export class CreateTaskDrawerComponent implements OnInit {
   Text: string = '';
 
   TaskList : Task[];
+  Loading: boolean = false;
 
-  @Output() onAddTask = new EventEmitter<boolean>();
+  @Output()
+  onAddTask = new EventEmitter<boolean>();
 
   constructor(private TaskService : TaskService, public snackBar: MatSnackBar) {
 
@@ -41,21 +43,37 @@ export class CreateTaskDrawerComponent implements OnInit {
 
   addTask(){
 
-    if(this.Text && this.Text.indexOf('!') === -1){
+    this.Loading = true;
 
-      this.TaskService.addTask(new Task(777, this.Text, new Date()));
-      this.Text = '';
-      this.sidenavClose();
-      this.onAddTask.emit();
+    setTimeout(function () {
 
-    }//if
-    else {
+      if(this.Text && this.Text.indexOf('!') === -1){
 
-      this.snackBar.open('Incorrect Text', null, {
-        duration: 3000,
-      });
+        let id = 1;
 
-    }//else
+        if(this.TaskList.length > 0){
+
+          id = this.TaskList[this.TaskList.length - 1].id + 1;
+
+        }//if
+
+        this.TaskService.addTask(new Task(id, this.Text, new Date()));
+        this.Text = '';
+        this.sidenavClose();
+        this.onAddTask.emit();
+
+      }//if
+      else {
+
+        this.snackBar.open('Incorrect Text', null, {
+          duration: 3000,
+        });
+
+      }//else
+
+      this.Loading = false;
+
+    }.bind(this), 1200);
 
   }//addTask
 

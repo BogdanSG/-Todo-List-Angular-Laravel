@@ -5,8 +5,12 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div style="margin: 0 auto; margin-top: 100px; padding-left: 15%; padding-right: 15%">
-      <app-task-table #taskTable [sidenav]="sidenav"></app-task-table>
+    <div *ngIf="Loading" class="center-screen">
+      <mat-spinner></mat-spinner>
+      <h3>Tasks are loading</h3>
+    </div>
+    <div *ngIf="!Loading" style="margin: 0 auto; margin-top: 100px; padding-left: 15%; padding-right: 15%">
+      <app-task-table #taskTable (onRemoveTask)="onRemoveTask()" [sidenav]="sidenav"></app-task-table>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
