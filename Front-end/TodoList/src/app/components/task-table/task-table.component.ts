@@ -37,11 +37,11 @@ export class TaskTableComponent implements OnInit, AfterViewInit {
 
   showTaskEditDialog(task : Task){
 
-    this.TaskEditDialog.open(TaskEditDialogComponent, {disableClose: true, data: task.text}).afterClosed().subscribe(result => {
+    this.TaskEditDialog.open(TaskEditDialogComponent, {disableClose: true, data: task.text}).afterClosed().subscribe(async result => {
 
       if(result){
 
-        task.text = result;
+        await this.TaskService.updateTask(task, result);
         this.refreshTable();
 
       }//if
@@ -52,11 +52,11 @@ export class TaskTableComponent implements OnInit, AfterViewInit {
 
   showTaskRemoveDialog(task : Task){
 
-    this.TaskEditDialog.open(TaskRemoveDialogComponent, {disableClose: true}).afterClosed().subscribe(result => {
+    this.TaskEditDialog.open(TaskRemoveDialogComponent, {disableClose: true}).afterClosed().subscribe(async result => {
 
       if(result === true){
 
-        this.TaskService.removeTask(task);
+        await this.TaskService.removeTask(task);
         this.refreshTable();
         this.onRemoveTask.emit();
 

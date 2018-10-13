@@ -45,19 +45,11 @@ export class CreateTaskDrawerComponent implements OnInit {
 
     this.Loading = true;
 
-    setTimeout(function () {
+    setTimeout(async function () {
 
       if(this.Text && this.Text.indexOf('!') === -1){
 
-        let id = 1;
-
-        if(this.TaskList.length > 0){
-
-          id = this.TaskList[this.TaskList.length - 1].id + 1;
-
-        }//if
-
-        this.TaskService.addTask(new Task(id, this.Text, new Date()));
+        await this.TaskService.addTask(this.Text);
         this.Text = '';
         this.sidenavClose();
         this.onAddTask.emit();

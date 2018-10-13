@@ -38,6 +38,7 @@ import { TaskEditDialogComponent } from './components/task-edit-dialog/task-edit
 import { TaskRemoveDialogComponent } from './components/task-remove-dialog/task-remove-dialog.component';
 
 import { TaskService } from './services/task.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { TaskService } from './services/task.service';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatSelectModule,
     MatInputModule,
     MatCheckboxModule,
